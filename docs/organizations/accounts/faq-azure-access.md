@@ -168,6 +168,17 @@ While not the norm, we've seen it takes several hours or even days before this c
 
 <a name="azure-ad-groups"></a>
 
+### Q: My UPN was changed on Azure Active Directory and now I unable to access my workspace connected to Azure DevOps in Visual Studio 2019. How do I get access again?
+
+A: If your UPN has changed and you have not backed up the information to Azure repos you will lose your code, if you know that your UPN will change, before it does, make sure push your progress to Azure DevOps repos, and to regain access to the workspace in Visual Studio 2019 you must delete the old workspace, by using the following command:
+
+```
+tf workspaces /computer:* /owner:* /format:xml /collection:https://dev.azure.com/yourorg
+```
+
+delete the missing or old workspace and create a new one. For more information, see [Workspace Command](../../repos/tfvc/workspace-command.md).
+
+
 ## Azure AD groups
 
 ### Q: Why can't I assign Azure DevOps permissions directly to an Azure AD group?
